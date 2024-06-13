@@ -1,32 +1,38 @@
+# fly.toml app configuration file generated for sd3 on 2024-06-13T13:34:45+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-
-[build]
-    image = "registry.fly.io/<YOUR IMAGE REPO:TAG>"
+app = ''
+primary_region = 'ord'
 
 [experimental]
-    cmd = ["./start.sh"]
+  cmd = ['./start.sh']
+
+[build]
+  image = 'registry.fly.io/<APP_NAME>:latest'
 
 [env]
-    COG_LOG_LEVEL = "debug"
-
-[http_service]
-    internal_port = 5000
-    force_https = true
-    auto_stop_machines = true
-    auto_start_machines = true
-    min_machines_running = 0
-    processes = ['app']
-
-[[vm]]
-    size = "performance-8x"
-    memory = "16gb"
-    gpu_kind = "l40s"
+  COG_LOG_LEVEL = 'debug'
 
 [[mounts]]
-    source = 'data'
-    destination = '/src/weights'
-    initial_size = '10G'
+  source = 'sd3_cache'
+  destination = '/src/sd3-cache'
+  initial_size = '50G'
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[files]]
-    guest_path = "/src/start.sh"
-    local_path = "./start.sh"
+  guest_path = '/src/start.sh'
+  local_path = './start.sh'
+
+[[vm]]
+  size = 'performance-8x'
+  memory = '16gb'
+  gpu_kind = 'l40s'

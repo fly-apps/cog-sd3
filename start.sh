@@ -1,10 +1,9 @@
 #!/bin/bash
 
-if [ -f /src/weights/large-v2.pt ]
-then
-    echo "Weights already exist"
-else
-    /src/scripts/get_weights.sh
+mkdir -p /src/sd3-cache/public
+
+if [ ! -f /src/sd3-cache/model_index.json ]; then
+    python /src/scripts/download_hf_model.py
 fi
 
 python -m cog.server.http
