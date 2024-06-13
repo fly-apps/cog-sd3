@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import time
 import boto3
+from sqids import Sqids
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import numpy as np
@@ -224,12 +225,16 @@ class Predictor(BasePredictor):
             _, has_nsfw_content = self.run_safety_checker(output.images)
 
         output_paths = []
+        sqids = Sqids()
+        current_timestamp = int(time.time()) 
+
         for i, image in enumerate(output.images):
             if not disable_safety_checker:
                 if has_nsfw_content[i]:
                     print(f"NSFW content detected in image {i}")
                     continue
-            output_path = f"/tmp/out-{i}.{output_format}"
+            unique_id = sqids.encode([current_timestamp, i])
+            output_path = f"/tmp/out-{unique_id}.{output_format}"
             if output_format != 'png':
                 image.save(output_path, quality=output_quality, optimize=True)
             else:

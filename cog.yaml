@@ -19,6 +19,7 @@ build:
     - "sentencepiece"
     - "protobuf"
     - "boto3"
+    - "sqids"
 
   run:
     - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && chmod +x /usr/local/bin/pget
