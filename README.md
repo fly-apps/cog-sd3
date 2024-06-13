@@ -2,6 +2,9 @@
 
 ## Deploy to Fly.io
 
+> [!IMPORTANT]  
+> Before you deploy, you'll need to get access to the model on Hugging Face by filling out the form in the model [repo](https://huggingface.co/stabilityai/stable-diffusion-3-medium-diffusers/tree/main).
+
 ```
 fly launch --name [APP_NAME] --no-deploy
 
