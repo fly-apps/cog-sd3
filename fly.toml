@@ -1,0 +1,32 @@
+
+
+[build]
+    image = "registry.fly.io/<YOUR IMAGE REPO:TAG>"
+
+[experimental]
+    cmd = ["./start.sh"]
+
+[env]
+    COG_LOG_LEVEL = "debug"
+
+[http_service]
+    internal_port = 5000
+    force_https = true
+    auto_stop_machines = true
+    auto_start_machines = true
+    min_machines_running = 0
+    processes = ['app']
+
+[[vm]]
+    size = "performance-8x"
+    memory = "16gb"
+    gpu_kind = "l40s"
+
+[[mounts]]
+    source = 'data'
+    destination = '/src/weights'
+    initial_size = '10G'
+
+[[files]]
+    guest_path = "/src/start.sh"
+    local_path = "./start.sh"
