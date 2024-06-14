@@ -3,9 +3,9 @@
     <p>Run <strong><a href="https://stability.ai/news/stable-diffusion-3-medium">Stable Diffusion 3 Medium</a></strong> as a Replicate Cog on Fly.io!</p>
 </div>
 
-Stable Diffusion 3 Medium is Stability AI's most advanced text-to-image open model yet. This demo exposes the model via a simple HTTP server, thanks to [Replicate Cog](https://github.com/replicate/cog). Cog is an open-source tool that lets you package machine learning models in a standard, production-ready container. When you're up and running, you can generate images using the `/predictions` endpoint. Images are automatically stored in object-storage on [Tigris](https://www.tigrisdata.com/) (you'll need to make sure you add a bucket to the app).
-
 ![0614](https://github.com/fly-apps/cog-sd3/assets/3727384/c026fcf9-79a9-40eb-ae7c-6f1be6801b84)
+
+Stable Diffusion 3 Medium is Stability AI's most advanced text-to-image open model yet. This demo exposes the model via a simple HTTP server, thanks to [Replicate Cog](https://github.com/replicate/cog). Cog is an open-source tool that lets you package machine learning models in a standard, production-ready container. When you're up and running, you can generate images using the `/predictions` endpoint. Images are automatically stored in object-storage on [Tigris](https://www.tigrisdata.com/) (you'll need to make sure you add a bucket to the app).
 
 ## Deploy to Fly.io
 
